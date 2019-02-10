@@ -2,7 +2,7 @@
     <div id="app">
         <header class="title">
             <h2 class="title__head">Brightness & Contrast Developer Test</h2>
-            <p class="title__content">08 Feb, 2019 - 15 Feb, 2019</p>
+            <p class="title__content">08 Feb, 2019 ー 15 Feb, 2019</p>
         </header>
         <div class="image-box">
             <img src="./assets/hero.png" alt="hero">
@@ -145,7 +145,6 @@
         color: #fff;
         background-color: #7045B9;
         text-align: center;
-        letter-spacing: .2rem;
     }
 
     .title__head {
@@ -156,6 +155,7 @@
     .title__content {
         font-size: .9rem;
         font-weight: 300;
+        letter-spacing: .1rem;
     }
 
     .image-box {
