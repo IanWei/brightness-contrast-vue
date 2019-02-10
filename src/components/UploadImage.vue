@@ -37,7 +37,6 @@
           let ctx = canvas.getContext('2d');
           let image = new Image();
 
-
           image.onload = function() {
             let ratio = canvas.width / image.width;
             canvas.height = image.height * ratio;
@@ -66,7 +65,6 @@
 
           EventBus.$emit('get-image', this.hasImage);
           EventBus.$emit('set-image', this.drawnImage);
-
         }
       },
     }
@@ -92,6 +90,7 @@
         text-align: center;
         padding-top: 4rem;
         font-size: 1.8rem;
+        animation: moveInUp 1s ease;
     }
 
     .canvas {
@@ -176,5 +175,20 @@
     /*hide the image icon if there is no image*/
     .hide {
         opacity: 0;
+    }
+
+    @keyframes moveInUp {
+        0% {
+            opacity: 0;
+            transform: translateY(3rem);
+        }
+        70% {
+            opacity: .7;
+            transform: translateY(-1rem);
+        }
+        100% {
+            opacity: 1;
+            transform: translateY(0);
+        }
     }
 </style>
