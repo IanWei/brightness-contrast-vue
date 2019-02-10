@@ -1,23 +1,75 @@
 <template>
     <div class="container">
         <div class="container__image">
-            <!--<p>Please Upload your image</p>-->
-            <img src="../assets/fdsafdsaf291yhi2121.png" alt="image" ref="image">
+            <p v-if="!hasImage">Please Upload your image</p>
+            <img src="" :style="filter" alt="image" ref="image" :class="{ hide: hasImage === false }">
         </div>
         <div class="tabs">
             <div class="tabs__box">
                 <span class="tabs__box--name">NAME</span>
-                <span class="tabs__box--attribute">file name</span>
+                <span class="tabs__box--attribute">{{ filename }}</span>
             </div>
-            <input type="file" class="tabs__upload" name="file" id="file" ref="file"/>
+            <input type="file" class="tabs__upload" name="file" id="file" ref="file" @change="uploadImage"/>
             <label for="file">UPLOAD</label>
         </div>
     </div>
 </template>
 <script>
+    import { EventBus} from "../event_bus";
+
     export default {
-      name: 'UploadImage'
+      name: 'UploadImage',
+      props: {
+        brightnessValue: {
+          type: Number,
+          required: true
+        },
+        contrastValue: {
+          type: Number,
+          required: true
+        }
+      },
+      data() {
+        return {
+          filename: 'A LONG FILE NAME …',
+          hasImage: false
+        }
+      },
+      methods: {
+        uploadImage() {
+          const preview = this.$refs.image;
+          const file = this.$refs.file.files[0];
+          let name = '';
+          const reader = new FileReader();
+          reader.onload = function() {
+            preview.src = reader.result;
+          };
+          if (file) {
+            this.hasImage = true;
+            reader.readAsDataURL(file);
+            name = file.name;
+            console.log(name);
+            if (name.length > 14) {
+              this.filename = name.slice(0, 18).concat(' ...');
+            } else {
+              this.filename = name;
+            }
+          } else {
+            this.hasImage = false;
+            this.filename = 'A LONG FILE NAME …';
+            preview.src = "";
+          }
+
+          EventBus.$emit('get-image', this.hasImage);
+        }
+      },
+      computed: {
+        filter() {
+          return { filter: `brightness(${this.brightnessValue}%) contrast(${this.contrastValue}%)`}
+        }
+      }
     }
+
 </script>
 <style>
     .container {
@@ -108,5 +160,8 @@
     }
     .tabs__upload + label {
         cursor: pointer;
+    }
+    .hide {
+        opacity: 0;
     }
 </style>

@@ -24,7 +24,7 @@
                 sliderChange="contrast-change"
                 :hasImage="hasImage">
         </FilterSliderBar>
-        <UploadImage></UploadImage>
+        <UploadImage :brightnessValue="brightness" :contrastValue="contrast"></UploadImage>
     </div>
 </template>
 
@@ -53,6 +53,9 @@
       });
       EventBus.$on('contrast-change', (value) => {
         this.contrast = value;
+      });
+      EventBus.$on('get-image', (value) => {
+        this.hasImage = value;
       });
     }
   }
