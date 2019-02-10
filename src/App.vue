@@ -4,6 +4,12 @@
       <p class="title__head">Brightness & Contrast Developer Test</p>
       <p class="title__content">08 Feb, 2019 - 15 Feb, 2019</p>
     </header>
+    <div class="image-box">
+      <img src="./assets/hero.png" alt="hero">
+    </div>
+    <div class="profile">
+      <img src="./assets/ian.png" alt="Ian">
+    </div>
   </div>
 </template>
 
@@ -63,5 +69,22 @@ export default {
   .title__content {
     font-size: .9rem;
     font-weight: 300;
+  }
+
+  .image-box {
+    margin-bottom: 2rem;
+  }
+
+  img {
+    width: 100%;
+  }
+
+  .profile {
+    width: 6.5rem;
+    height: 6.5rem;
+    border: 2px solid #fff;
+    border-radius: 50%;
+    margin: -7rem auto 1rem auto;
+    overflow: auto;
   }
 </style>
