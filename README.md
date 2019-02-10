@@ -2,9 +2,12 @@
 
 ## Preface
 ```
-This is my first time to contact Vue.js. I took some time to learn it, and found that it is an easy-to-learn framework of JavaScript. Although some features I haven't touched, I'll keep exploring and learn Vue.js.
+This is my first time to contact Vue.js. I took some time to learn it, 
+and found that it is an easy-to-learn framework of JavaScript. 
+Although some features I haven't touched, I'll keep exploring and learn Vue.js.
 
-The project I haven't integrated SASS feature with it. I'll integrate this feature in future to keep the code more concise.
+The project I haven't integrated SASS feature with it. 
+I'll integrate this feature in future to keep the code more concise.
 I'm so glad that I have this chance to learn a new framework by the Code Challenge.
 ```
 
