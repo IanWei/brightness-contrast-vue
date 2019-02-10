@@ -46,13 +46,11 @@
 
           const file = this.$refs.file.files[0];
           let name = '';
-          const reader = new FileReader();
 
           if (file) {
             image.src = URL.createObjectURL(file);
             this.drawnImage = image;
             this.hasImage = true;
-            reader.readAsDataURL(file);
             name = file.name;
             if (name.length > 14) {
               this.filename = name.slice(0, 18).concat(' …');
