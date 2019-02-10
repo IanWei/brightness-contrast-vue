@@ -2,7 +2,6 @@
     <div class="container">
         <div class="container__image">
             <p v-if="!hasImage">Please Upload your image</p>
-            <!--<img src="" :style="filter" alt="image" ref="image" :class="{ hide: hasImage === false }">-->
             <div class="canvas">
                 <canvas id="canvas"  width="333" height="210"></canvas>
             </div>
@@ -45,16 +44,10 @@
             ctx.drawImage(image, 0, 0, image.width, image.height, 0, 0, canvas.width, canvas.height);
           };
 
-          // Loading image without canvas
-          // const preview = this.$refs.image;
           const file = this.$refs.file.files[0];
           let name = '';
           const reader = new FileReader();
 
-          // Loading image without canvas
-          // reader.onload = function() {
-          //   preview.src = reader.result;
-          // };
           if (file) {
             image.src = URL.createObjectURL(file);
             this.drawnImage = image;
@@ -69,24 +62,13 @@
           } else {
             this.hasImage = false;
             this.filename = 'A LONG FILE NAME …';
-            // Loading image without canvas
-            // preview.src = "";
           }
 
           EventBus.$emit('get-image', this.hasImage);
           EventBus.$emit('set-image', this.drawnImage);
 
-
-          // For canvas
-
         }
       },
-      computed: {
-        // render filtered image synchronously
-        // filter() {
-        //   return { filter: `brightness(${this.brightnessValue}%) contrast(${this.contrastValue}%)`}
-        // }
-      }
     }
 
 </script>

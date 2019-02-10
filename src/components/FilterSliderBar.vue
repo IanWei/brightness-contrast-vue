@@ -19,8 +19,6 @@
     import vueSlider from 'vue-slider-component';
     import { EventBus } from "../event_bus";
 
-
-
     export default {
       name: 'FilterSliderBar',
       components: {

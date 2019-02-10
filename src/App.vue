@@ -34,7 +34,6 @@
   import UploadImage from './components/UploadImage';
   import { EventBus } from "./event_bus";
 
-
   function applyContrast(data, contrast) {
     var factor = (259.0 * (contrast + 255.0)) / (255.0 * (259.0 - contrast));
     for (var i = 0; i < data.length; i+= 4) {
@@ -60,7 +59,6 @@
       data[i+2] += 255 * (brightness / 100);
     }
   }
-
 
   export default {
     name: 'app',
@@ -110,7 +108,6 @@
     /************/
     /*Base Style*/
     /************/
-
 
     *,
     *::before,
