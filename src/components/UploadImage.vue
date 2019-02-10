@@ -2,7 +2,10 @@
     <div class="container">
         <div class="container__image">
             <p v-if="!hasImage">Please Upload your image</p>
-            <img src="" :style="filter" alt="image" ref="image" :class="{ hide: hasImage === false }">
+            <!--<img src="" :style="filter" alt="image" ref="image" :class="{ hide: hasImage === false }">-->
+            <div class="canvas">
+                <canvas id="canvas"  width="333" height="210"></canvas>
+            </div>
         </div>
         <div class="tabs">
             <div class="tabs__box">
@@ -39,14 +42,30 @@
         // Upload the image from the local computer, and render the truncated filename
 
         uploadImage() {
-          const preview = this.$refs.image;
+          // For canvas
+          const canvas = document.querySelector('#canvas');
+          let ctx = canvas.getContext('2d');
+          let image = new Image();
+
+
+          image.onload = function() {
+            let ratio = canvas.width / image.width;
+            canvas.height = image.height * ratio;
+            ctx.drawImage(image, 0, 0, image.width, image.height, 0, 0, canvas.width, canvas.height);
+          };
+
+          // Loading image without canvas
+          // const preview = this.$refs.image;
           const file = this.$refs.file.files[0];
           let name = '';
           const reader = new FileReader();
-          reader.onload = function() {
-            preview.src = reader.result;
-          };
+
+          // Loading image without canvas
+          // reader.onload = function() {
+          //   preview.src = reader.result;
+          // };
           if (file) {
+            image.src = URL.createObjectURL(file);
             this.hasImage = true;
             reader.readAsDataURL(file);
             name = file.name;
@@ -58,10 +77,15 @@
           } else {
             this.hasImage = false;
             this.filename = 'A LONG FILE NAME …';
-            preview.src = "";
+            // Loading image without canvas
+            // preview.src = "";
           }
 
           EventBus.$emit('get-image', this.hasImage);
+
+
+          // For canvas
+
         }
       },
       computed: {
@@ -87,6 +111,10 @@
         width: 33.3rem;
         height: auto;
         overflow: hidden;
+    }
+
+    .canvas {
+        width: 100%;
     }
 
     .tabs {
