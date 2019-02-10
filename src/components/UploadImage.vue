@@ -48,7 +48,6 @@
             this.hasImage = true;
             reader.readAsDataURL(file);
             name = file.name;
-            console.log(name);
             if (name.length > 14) {
               this.filename = name.slice(0, 18).concat(' ...');
             } else {
