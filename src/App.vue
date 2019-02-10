@@ -13,12 +13,16 @@
         <FilterSliderBar
                 color="#26A95B"
                 filter="Brightness"
-                icon="☀️">
+                icon="☀️"
+                sliderChange="bright-change"
+                :hasImage="hasImage">
         </FilterSliderBar>
         <FilterSliderBar
                 color="#4A90E2"
                 filter="Contrast"
-                icon="🌓">
+                icon="🌓"
+                sliderChange="contrast-change"
+                :hasImage="hasImage">
         </FilterSliderBar>
         <UploadImage></UploadImage>
     </div>
@@ -35,6 +39,13 @@
     components: {
       FilterSliderBar,
       UploadImage
+    },
+    data() {
+      return {
+        brightness: 100,
+        contrast: 100,
+        hasImage: false
+      }
     },
     mounted() {
       EventBus.$on('bright-change', (value) => {

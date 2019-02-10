@@ -6,7 +6,8 @@
                 v-bind="options"
                 v-model="sliderValue"
                 @drag="adjust"
-                ref="sliderRef">
+                ref="sliderRef"
+                :disabled="!hasImage">
         </vue-slider>
         <p class="slider__content">Slide to adjust image {{ filter.toLowerCase() }} ! {{icon}} </p>
     </div>
@@ -36,6 +37,10 @@
         },
         sliderChange: {
           type: String,
+          required: true
+        },
+        hasImage: {
+          type: Boolean,
           required: true
         }
       },
