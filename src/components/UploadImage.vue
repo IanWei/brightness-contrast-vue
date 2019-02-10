@@ -60,6 +60,7 @@
               this.filename = name;
             }
           } else {
+            canvas.clear();
             this.hasImage = false;
             this.filename = 'A LONG FILE NAME …';
           }
