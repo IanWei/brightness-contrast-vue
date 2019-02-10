@@ -1,7 +1,7 @@
 <template>
     <div class="container">
         <div class="container__image">
-            <p v-if="!hasImage">Please Upload your image</p>
+            <p v-if="!hasImage" class="notice">Please Upload your image</p>
             <div class="canvas">
                 <canvas id="canvas"  width="333" height="210"></canvas>
             </div>
@@ -86,6 +86,12 @@
         width: 33.3rem;
         height: auto;
         overflow: hidden;
+    }
+
+    .notice {
+        text-align: center;
+        padding-top: 4rem;
+        font-size: 1.8rem;
     }
 
     .canvas {
