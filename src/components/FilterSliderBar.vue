@@ -4,7 +4,9 @@
         <vue-slider
                 class="slider__bar"
                 v-bind="options"
-                v-model="sliderValue">
+                v-model="sliderValue"
+                @drag="adjust"
+                ref="sliderRef">
         </vue-slider>
         <p class="slider__content">Slide to adjust image {{ filter.toLowerCase() }} ! {{icon}} </p>
     </div>
@@ -12,6 +14,8 @@
 </template>
 <script>
     import vueSlider from 'vue-slider-component';
+    import { EventBus } from "../event_bus";
+
     export default {
       name: 'FilterSliderBar',
       components: {
@@ -27,6 +31,10 @@
           required: true
         },
         icon: {
+          type: String,
+          required: true
+        },
+        sliderChange: {
           type: String,
           required: true
         }
@@ -47,6 +55,11 @@
             width: '94%',
             clickable: false
           }
+        }
+      },
+      methods: {
+        adjust() {
+          EventBus.$emit(this.sliderChange, this.$refs.sliderRef.value)
         }
       }
     }

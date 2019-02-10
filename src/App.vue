@@ -26,15 +26,23 @@
 
 <script>
 
-
   import FilterSliderBar from './components/FilterSliderBar';
   import UploadImage from './components/UploadImage';
+  import { EventBus } from "./event_bus";
 
   export default {
     name: 'app',
     components: {
       FilterSliderBar,
       UploadImage
+    },
+    mounted() {
+      EventBus.$on('bright-change', (value) => {
+        this.brightness = value;
+      });
+      EventBus.$on('contrast-change', (value) => {
+        this.contrast = value;
+      });
     }
   }
 </script>
