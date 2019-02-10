@@ -24,7 +24,7 @@
                 sliderChange="contrast-change"
                 :hasImage="hasImage">
         </FilterSliderBar>
-        <UploadImage :brightnessValue="brightness" :contrastValue="contrast"></UploadImage>
+        <UploadImage></UploadImage>
     </div>
 </template>
 
@@ -34,6 +34,34 @@
   import UploadImage from './components/UploadImage';
   import { EventBus } from "./event_bus";
 
+
+  function applyContrast(data, contrast) {
+    var factor = (259.0 * (contrast + 255.0)) / (255.0 * (259.0 - contrast));
+    for (var i = 0; i < data.length; i+= 4) {
+      data[i] = truncateColor(factor * (data[i] - 128.0) + 128.0);
+      data[i+1] = truncateColor(factor * (data[i+1] - 128.0) + 128.0);
+      data[i+2] = truncateColor(factor * (data[i+2] - 128.0) + 128.0);
+    }
+  }
+
+  function truncateColor(value) {
+    if (value < 0) {
+      value = 0;
+    } else if (value > 255) {
+      value = 255;
+    }
+    return value;
+  }
+
+  function applyBrightness(data, brightness) {
+    for (var i = 0; i < data.length; i+= 4) {
+      data[i] += 255 * (brightness / 100);
+      data[i+1] += 255 * (brightness / 100);
+      data[i+2] += 255 * (brightness / 100);
+    }
+  }
+
+
   export default {
     name: 'app',
     components: {
@@ -42,24 +70,38 @@
     },
     data() {
       return {
-        brightness: 100,
-        contrast: 100,
-        hasImage: false
+        hasImage: false,
+        drawnImage: null
+      }
+    },
+    methods: {
+      applyFilter(applyFunc, value) {
+        const canvas = document.querySelector('#canvas');
+        const ctx = canvas.getContext('2d');
+        let ratio = canvas.width / this.drawnImage.width; // Every time should reset the data value
+        canvas.height = this.drawnImage.height * ratio;
+        ctx.drawImage(this.drawnImage, 0, 0, this.drawnImage.width, this.drawnImage.height, 0, 0, canvas.width, canvas.height);
+        const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+        applyFunc(imageData.data, value);
+        ctx.putImageData(imageData, 0, 0);
       }
     },
     mounted() {
       // Listen slider bar change event
       EventBus.$on('bright-change', (value) => {
-        this.brightness = value;
+        this.applyFilter(applyBrightness, value);
       });
       EventBus.$on('contrast-change', (value) => {
-        this.contrast = value;
+        this.applyFilter(applyContrast, value);
       });
 
       // Listen uploading image event
       EventBus.$on('get-image', (value) => {
         this.hasImage = value;
       });
+      EventBus.$on('set-image', value => {
+        this.drawnImage = value;
+      })
     }
   }
 </script>

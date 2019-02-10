@@ -22,20 +22,11 @@
 
     export default {
       name: 'UploadImage',
-      props: {
-        brightnessValue: {
-          type: Number,
-          required: true
-        },
-        contrastValue: {
-          type: Number,
-          required: true
-        }
-      },
       data() {
         return {
           filename: 'A LONG FILE NAME …',
-          hasImage: false
+          hasImage: false,
+          drawnImage: null
         }
       },
       methods: {
@@ -66,6 +57,7 @@
           // };
           if (file) {
             image.src = URL.createObjectURL(file);
+            this.drawnImage = image;
             this.hasImage = true;
             reader.readAsDataURL(file);
             name = file.name;
@@ -82,6 +74,7 @@
           }
 
           EventBus.$emit('get-image', this.hasImage);
+          EventBus.$emit('set-image', this.drawnImage);
 
 
           // For canvas
@@ -90,9 +83,9 @@
       },
       computed: {
         // render filtered image synchronously
-        filter() {
-          return { filter: `brightness(${this.brightnessValue}%) contrast(${this.contrastValue}%)`}
-        }
+        // filter() {
+        //   return { filter: `brightness(${this.brightnessValue}%) contrast(${this.contrastValue}%)`}
+        // }
       }
     }
 

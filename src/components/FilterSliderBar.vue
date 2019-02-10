@@ -19,6 +19,8 @@
     import vueSlider from 'vue-slider-component';
     import { EventBus } from "../event_bus";
 
+
+
     export default {
       name: 'FilterSliderBar',
       components: {
@@ -52,7 +54,7 @@
       },
       data() {
         return {
-          sliderValue: 100,
+          sliderValue: 0,
           options: {
             tooltipStyle: {
               display: 'none'
@@ -63,6 +65,7 @@
             processStyle: {
               backgroundColor: this.color
             },
+            min: -100,
             width: '94%',
             clickable: false
           }
@@ -71,6 +74,7 @@
       methods: {
         // emit the event listener to the App
         adjust() {
+          // Update the canvas with the new data
           EventBus.$emit(this.sliderChange, this.$refs.sliderRef.value)
         }
       }
