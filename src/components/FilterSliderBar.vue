@@ -6,6 +6,7 @@
                 v-bind="options"
                 v-model="sliderValue"
                 @drag="adjust"
+                @drag-end="showTips"
                 ref="sliderRef"
                 :disabled="!hasImage">
         </vue-slider>
@@ -55,7 +56,8 @@
           sliderValue: 0,
           options: {
             tooltipStyle: {
-              display: 'none'
+              display: 'none',
+              backgroundColor: this.color
             },
             sliderStyle: {
               backgroundColor: this.color
@@ -73,7 +75,11 @@
         // emit the event listener to the App
         adjust() {
           // Update the canvas with the new data
+          this.options.tooltipStyle.display = 'block';
           EventBus.$emit(this.sliderChange, this.$refs.sliderRef.value)
+        },
+        showTips() {
+          this.options.tooltipStyle.display = 'none';
         }
       }
     }
