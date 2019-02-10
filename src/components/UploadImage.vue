@@ -52,7 +52,7 @@
             this.hasImage = true;
             name = file.name;
             if (name.length > 14) {
-              this.filename = name.slice(0, 16).concat(' …');
+              this.filename = name.slice(0, 14).concat(' …');
             } else {
               this.filename = name;
             }
