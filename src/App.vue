@@ -10,7 +10,16 @@
         <div class="profile">
             <img src="./assets/ian.png" alt="Ian">
         </div>
-        <FilterSliderBar></FilterSliderBar>
+        <FilterSliderBar
+                color="#26A95B"
+                filter="Brightness"
+                icon="☀️">
+        </FilterSliderBar>
+        <FilterSliderBar
+                color="#4A90E2"
+                filter="Contrast"
+                icon="🌓">
+        </FilterSliderBar>
     </div>
 </template>
 
