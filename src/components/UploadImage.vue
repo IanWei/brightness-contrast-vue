@@ -60,7 +60,8 @@
               this.filename = name;
             }
           } else {
-            canvas.clear();
+            // Clean the existing canvas content
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
             this.hasImage = false;
             this.filename = 'A LONG FILE NAME …';
           }
