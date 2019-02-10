@@ -55,7 +55,7 @@
             reader.readAsDataURL(file);
             name = file.name;
             if (name.length > 14) {
-              this.filename = name.slice(0, 18).concat(' ...');
+              this.filename = name.slice(0, 18).concat('…');
             } else {
               this.filename = name;
             }
