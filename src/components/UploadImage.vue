@@ -1,7 +1,7 @@
 <template>
     <div class="container">
         <div class="container__image">
-            <p v-if="!hasImage" class="notice">Please Upload your image</p>
+            <p v-if="!hasImage" class="notice">Please upload your image</p>
             <div class="canvas">
                 <canvas id="canvas"  width="333" height="210"></canvas>
             </div>
