@@ -9,7 +9,6 @@ npm install
 ```
 **Notice**
 Uploaded image should be in 'png' format
-Default brightness value and contrast value is 100%
 Enable the slider bar by uploading a valid image.
 **********
 npm run serve
