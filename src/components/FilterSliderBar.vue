@@ -14,6 +14,8 @@
 
 </template>
 <script>
+    // Build a customised filter slider bar for different types of filter
+
     import vueSlider from 'vue-slider-component';
     import { EventBus } from "../event_bus";
 
@@ -23,10 +25,12 @@
         vueSlider
       },
       props: {
+        // change slider bar's color
         color: {
           type: String,
           required: true
         },
+        // declare the type of filter
         filter: {
           type: String,
           required: true
@@ -35,10 +39,12 @@
           type: String,
           required: true
         },
+        // pass the name of event-listener
         sliderChange: {
           type: String,
           required: true
         },
+        // enable the slider bar by conditional image
         hasImage: {
           type: Boolean,
           required: true
@@ -63,6 +69,7 @@
         }
       },
       methods: {
+        // emit the event listener to the App
         adjust() {
           EventBus.$emit(this.sliderChange, this.$refs.sliderRef.value)
         }

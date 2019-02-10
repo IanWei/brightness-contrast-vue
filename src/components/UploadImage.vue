@@ -15,7 +15,7 @@
     </div>
 </template>
 <script>
-    import { EventBus} from "../event_bus";
+    import { EventBus } from "../event_bus";
 
     export default {
       name: 'UploadImage',
@@ -36,6 +36,8 @@
         }
       },
       methods: {
+        // Upload the image from the local computer, and render the truncated filename
+
         uploadImage() {
           const preview = this.$refs.image;
           const file = this.$refs.file.files[0];
@@ -63,6 +65,7 @@
         }
       },
       computed: {
+        // render filtered image synchronously
         filter() {
           return { filter: `brightness(${this.brightnessValue}%) contrast(${this.contrastValue}%)`}
         }
@@ -160,6 +163,8 @@
     .tabs__upload + label {
         cursor: pointer;
     }
+
+    /*hide the image icon if there is no image*/
     .hide {
         opacity: 0;
     }

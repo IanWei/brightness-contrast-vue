@@ -48,12 +48,15 @@
       }
     },
     mounted() {
+      // Listen slider bar change event
       EventBus.$on('bright-change', (value) => {
         this.brightness = value;
       });
       EventBus.$on('contrast-change', (value) => {
         this.contrast = value;
       });
+
+      // Listen uploading image event
       EventBus.$on('get-image', (value) => {
         this.hasImage = value;
       });
@@ -62,6 +65,11 @@
 </script>
 
 <style>
+    /************/
+    /*Base Style*/
+    /************/
+
+
     *,
     *::before,
     *::after {
@@ -89,6 +97,8 @@
         background-color: #fff;
         padding-bottom: 1rem;
     }
+
+    /*Title*/
 
     .title {
         width: 100%;
