@@ -20,6 +20,7 @@
                 filter="Contrast"
                 icon="🌓">
         </FilterSliderBar>
+        <UploadImage></UploadImage>
     </div>
 </template>
 
@@ -27,11 +28,13 @@
 
 
   import FilterSliderBar from './components/FilterSliderBar';
+  import UploadImage from './components/UploadImage';
 
   export default {
     name: 'app',
     components: {
-      FilterSliderBar
+      FilterSliderBar,
+      UploadImage
     }
   }
 </script>
