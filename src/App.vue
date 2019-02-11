@@ -8,7 +8,7 @@
             <img src="./assets/hero.png" alt="hero">
         </div>
         <div class="profile">
-            <img src="./assets/ian.png" alt="Ian">
+            <img src="./assets/ian.png" alt="Ian" class="profile-image">
         </div>
         <FilterSliderBar
                 color="#26A95B"
@@ -169,11 +169,20 @@
     }
 
     .profile {
-        width: 6.5rem;
-        height: 6.5rem;
+        width: 7rem;
+        height: 7rem;
         border: 2px solid #fff;
         border-radius: 50%;
         margin: -7rem auto 1rem auto;
-        overflow: auto;
+        overflow: hidden;
+    }
+
+    .profile-image {
+        background-repeat: no-repeat;
+        background-size: cover;
+        width: 6.5rem;
+        height: 6.5rem;
+        border-radius: 50%;
+        border: 2px solid #fff;
     }
 </style>
