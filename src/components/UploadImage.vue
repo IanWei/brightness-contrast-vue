@@ -51,8 +51,8 @@
             this.drawnImage = image;
             this.hasImage = true;
             name = file.name;
-            if (name.length > 14) {
-              this.filename = name.slice(0, 14).concat(' …');
+            if (name.length > 18) {
+              this.filename = name.slice(0, 18).concat(' …');
             } else {
               this.filename = name;
             }
