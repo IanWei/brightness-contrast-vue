@@ -173,7 +173,7 @@
         height: 7rem;
         border: 2px solid #fff;
         border-radius: 50%;
-        margin: -7rem auto 1rem auto;
+        margin: -7.5rem auto 0 auto;
         overflow: hidden;
     }
 
