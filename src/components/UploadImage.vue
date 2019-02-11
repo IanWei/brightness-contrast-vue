@@ -79,7 +79,7 @@
     }
 
     .container__image {
-        margin-bottom: 1rem;
+        margin-bottom: 2rem;
         max-height: 21rem;
         width: 33.3rem;
         height: auto;
