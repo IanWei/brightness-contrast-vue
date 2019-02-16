@@ -21,10 +21,6 @@ npm install
 
 ### Run the app
 ```
-**Notice**
-Uploaded image should be in 'png' format
-Enable the slider bar by uploading a valid image.
-**********
 npm run serve
 1. Visit localhost:8080
 2. Select the Upload button at the bottom. 
