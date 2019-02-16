@@ -1,5 +1,7 @@
 # brightness-and-contrast
 
+The project is manipulating the pixel values directly to adjust the brightness and contrast value
+
 ## Preface
 ```
 The project I haven't integrated SASS feature with it. 
