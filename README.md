@@ -1,3 +1,5 @@
+This project was bootstrapped with Vue
+
 # brightness-and-contrast
 ```
 The project is manipulating the pixel values directly to adjust the brightness and contrast value
