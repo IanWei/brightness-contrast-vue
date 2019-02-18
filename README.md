@@ -2,6 +2,12 @@
 ```
 The project is manipulating the pixel values directly to adjust the brightness and contrast value
 ```
+## Preface
+
+```
+The project hasn't integrated the sass feature. Will integrate the feature to produce more concise code in the near future.
+```
+
 ## Feature
 ```
 Load and display an image file (png or jpg) from the filesystem (using a normal file picker dialog) by
