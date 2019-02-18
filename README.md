@@ -5,7 +5,8 @@ The project is manipulating the pixel values directly to adjust the brightness a
 ## Preface
 
 ```
-The project hasn't integrated the sass feature. Will integrate the feature to produce more concise code in the near future.
+The project hasn't integrated the sass feature. Will integrate the feature to produce more concise 
+code in the near future.
 ```
 
 ## Feature
